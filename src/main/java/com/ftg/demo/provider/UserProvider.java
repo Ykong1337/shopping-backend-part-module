@@ -7,31 +7,31 @@ import java.util.Date;
 
 public class UserProvider {
 
-    public String updatePro(String username, String phone_number, String mail, String account, String hometown, SexEnum sex, Date birth) {
+    public String updatePro(String phone_number, String username, Date birth, SexEnum sex, String hometown, String account, String mail) {
 
         return new SQL() {
             {
                 UPDATE("user");
 
                 if (username != null) {
-                    SET("username = #{arg0}");
+                    SET("username = #{arg1}");
                 }
-                if (mail != null) {
-                    SET("mail = #{arg2}");
+                if (birth != null) {
+                    SET("birth = #{arg2}");
                 }
-                if (account != null) {
-                    SET("account = #{arg3}");
+                if (sex != null) {
+                    SET("sex = #{arg3}");
                 }
                 if (hometown != null) {
                     SET("hometown = #{arg4}");
                 }
-                if (sex != null) {
-                    SET("sex = #{arg5}");
+                if (account != null) {
+                    SET("account = #{arg5}");
                 }
-                if (birth != null) {
-                    SET("birth = #{arg6}");
+                if (mail != null) {
+                    SET("mail = #{arg6}");
                 }
-                WHERE("phone_number = #{arg1}");
+                WHERE("phone_number = #{arg0}");
             }
         }.toString();
     }

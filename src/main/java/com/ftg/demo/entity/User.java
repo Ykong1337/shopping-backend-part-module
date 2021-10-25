@@ -30,6 +30,4 @@ public class User {
     private String mail;
 
     private String password;
-
-    private String new_password;
 }
