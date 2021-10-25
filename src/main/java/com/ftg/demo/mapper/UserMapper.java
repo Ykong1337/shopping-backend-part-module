@@ -14,7 +14,7 @@ public interface UserMapper extends BaseMapper<User> {
     @Insert("insert into user(phone_number,password) values(#{param1},#{param2})")
     public void registerUser(String username, String password);
 
-    @Update("update user set password=#{param2} where phone_number = #{param1} or email = #{param1} or account = #{param1}")
+    @Update("update user set password=#{param2} where phone_number = #{param1} or mail = #{param1} or account = #{param1}")
     public int modifyUser(String account, String password);
 
     //根据 手机号or账号or邮箱 取出密码
