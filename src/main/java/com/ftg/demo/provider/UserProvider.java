@@ -1,13 +1,13 @@
 package com.ftg.demo.provider;
 
-import com.ftg.demo.entity.SexEnum;
+import com.ftg.demo.entity.UserSexEnum;
 import org.apache.ibatis.jdbc.SQL;
 
 import java.util.Date;
 
 public class UserProvider {
 
-    public String updatePro(String phone_number, String username, Date birth, SexEnum sex, String hometown, String account, String mail) {
+    public String updatePro(String phone_number, String username, Date birth, UserSexEnum sex, String hometown, String account, String mail) {
 
         return new SQL() {
             {

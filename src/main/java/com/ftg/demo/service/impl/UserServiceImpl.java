@@ -2,7 +2,7 @@ package com.ftg.demo.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.ftg.demo.entity.SexEnum;
+import com.ftg.demo.entity.UserSexEnum;
 import com.ftg.demo.entity.User;
 import com.ftg.demo.mapper.UserMapper;
 import com.ftg.demo.service.UserService;
@@ -60,7 +60,7 @@ public class UserServiceImpl implements UserService {
             map.put("code", 200);
             map.put("msg", "注册成功！请登陆！！");
             map.put("data", 1);
-            userMapper.registerUser(phone_number,password);
+            userMapper.registerUser(phone_number, password);
         } else {
             map.put("code", 501);
             map.put("msg", "当前手机号已注册，请直接登陆！！！");
@@ -70,7 +70,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Map<String, Object> modifyUserInfo(String phone_number, String username, Date birth, SexEnum sex, String hometown, String account, String mail) {
+    public Map<String, Object> modifyUserInfo(String phone_number, String username, Date birth, UserSexEnum sex, String hometown, String account, String mail) {
         Map<String, Object> map = new HashMap<>();
         int n = userMapper.add_information(phone_number, username, birth, sex, hometown, account, mail);
         if (n > 0) {

@@ -1,7 +1,7 @@
 package com.ftg.demo.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.ftg.demo.entity.SexEnum;
+import com.ftg.demo.entity.UserSexEnum;
 import com.ftg.demo.entity.User;
 import com.ftg.demo.service.UserService;
 import io.swagger.annotations.Api;
@@ -40,7 +40,7 @@ public class UserController {
     }
 
     @PostMapping("/add_information")
-    public Object add_information(String phone_number, String username, Date birth, SexEnum sex, String hometown, String account, String mail) {
+    public Object add_information(String phone_number, String username, Date birth, UserSexEnum sex, String hometown, String account, String mail) {
         return userService.modifyUserInfo(phone_number, username, birth, sex, hometown, account, mail);
     }
 

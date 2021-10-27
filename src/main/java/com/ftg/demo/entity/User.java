@@ -19,7 +19,7 @@ public class User {
 
     private Date birth;
 
-    private SexEnum sex;
+    private UserSexEnum sex;
 
     private String hometown;
 

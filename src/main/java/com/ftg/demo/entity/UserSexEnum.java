@@ -1,6 +1,6 @@
 package com.ftg.demo.entity;
 
-public enum SexEnum {
+public enum UserSexEnum {
 
     男, 女
 }
