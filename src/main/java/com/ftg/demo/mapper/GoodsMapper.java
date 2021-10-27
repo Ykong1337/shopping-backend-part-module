@@ -32,4 +32,10 @@ public interface GoodsMapper extends BaseMapper<Goods> {
 
     @Update("update goods set state = #{arg2} where gid = #{arg0} and gname = #{arg1}")
     void updateGoodState(Integer gid, String gname, GoodsStateEnum state);
+
+    @Select("select state from good_classify where id = #{arg0} and name = #{arg1}")
+    String selectGoodClassifyState(Integer gid, String type);
+
+    @Update("update good_classify set state = '使用中' where id = #{arg0} and name = #{arg1}")
+    void enableGoodClassifyState(Integer gid, String type);
 }

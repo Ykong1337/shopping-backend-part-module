@@ -45,6 +45,9 @@ public class GoodsServiceImpl implements GoodsService {
         Goods goods = goodsMapper.selectOne(queryWrapper);
 
         if (goods == null) {
+            if (goodsMapper.selectGoodClassifyState(gid, type).equals("已弃用")) {
+                goodsMapper.enableGoodClassifyState(gid, type);
+            }
             map.put("code", 200);
             map.put("msg", "添加成功");
             map.put("data", 1);
