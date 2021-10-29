@@ -1,7 +1,6 @@
 package com.ftg.demo.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.ftg.demo.entity.GoodClassify;
 import com.ftg.demo.entity.UserSexEnum;
 import com.ftg.demo.entity.User;
 import com.ftg.demo.util.PageEx;

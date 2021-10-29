@@ -2,7 +2,6 @@ package com.ftg.demo.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ftg.demo.entity.GoodClassify;
-import com.ftg.demo.entity.Goods;
 import com.ftg.demo.service.GoodClassifyService;
 import com.ftg.demo.util.PageEx;
 import io.swagger.annotations.Api;
