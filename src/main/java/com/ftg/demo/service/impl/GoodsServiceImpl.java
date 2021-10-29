@@ -2,11 +2,13 @@ package com.ftg.demo.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.ftg.demo.entity.GoodClassify;
 import com.ftg.demo.entity.Goods;
 import com.ftg.demo.entity.GoodsHeatEnum;
 import com.ftg.demo.entity.GoodsStateEnum;
 import com.ftg.demo.mapper.GoodsMapper;
 import com.ftg.demo.service.GoodsService;
+import com.ftg.demo.util.PageEx;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,12 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Autowired
     GoodsMapper goodsMapper;
+
+    @Override
+    public PageEx<Goods> showPage(int page, int limit) {
+        PageEx<Goods> ip = new PageEx<>(page,limit);
+        return goodsMapper.selectPage(ip,null);
+    }
 
     @Override
     public Page<Goods> showAll(int page, int limit) {

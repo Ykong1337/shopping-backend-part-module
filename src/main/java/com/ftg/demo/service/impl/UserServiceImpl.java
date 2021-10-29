@@ -2,10 +2,12 @@ package com.ftg.demo.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.ftg.demo.entity.GoodClassify;
 import com.ftg.demo.entity.UserSexEnum;
 import com.ftg.demo.entity.User;
 import com.ftg.demo.mapper.UserMapper;
 import com.ftg.demo.service.UserService;
+import com.ftg.demo.util.PageEx;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,12 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     UserMapper userMapper;
+
+    @Override
+    public PageEx<User> showPage(int page, int limit) {
+        PageEx<User> ip = new PageEx<>(page,limit);
+        return userMapper.selectPage(ip,null);
+    }
 
     @Override
     public Page<User> showAll(int page, int limit) {

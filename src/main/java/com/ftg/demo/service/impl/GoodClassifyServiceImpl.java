@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ftg.demo.entity.GoodClassify;
 import com.ftg.demo.mapper.GoodClassifyMapper;
 import com.ftg.demo.service.GoodClassifyService;
+import com.ftg.demo.util.PageEx;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,12 @@ public class GoodClassifyServiceImpl implements GoodClassifyService {
         Page<GoodClassify> page1 = new Page<>(page, limit);
         goodClassifyMapper.selectPage(page1, null);
         return page1;
+    }
+
+    @Override
+    public PageEx<GoodClassify> showPage(int page, int limit) {
+        PageEx<GoodClassify> ip = new PageEx<>(page,limit);
+        return goodClassifyMapper.selectPage(ip,null);
     }
 
     @Override
@@ -86,9 +93,9 @@ public class GoodClassifyServiceImpl implements GoodClassifyService {
             map.put("code", 503);
             map.put("msg", "找不到类别");
         }
-
         return map;
     }
+
 
 
 }
