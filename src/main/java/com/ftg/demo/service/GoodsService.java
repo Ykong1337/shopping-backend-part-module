@@ -1,7 +1,6 @@
 package com.ftg.demo.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.ftg.demo.entity.GoodClassify;
 import com.ftg.demo.entity.Goods;
 import com.ftg.demo.entity.GoodsHeatEnum;
 import com.ftg.demo.entity.GoodsStateEnum;
@@ -10,6 +9,8 @@ import com.ftg.demo.util.PageEx;
 import java.util.Map;
 
 public interface GoodsService {
+
+    PageEx<Goods> fuzzyQuery(int page, int limit, String gname);
 
     PageEx<Goods> showPage(int page, int limit);
 

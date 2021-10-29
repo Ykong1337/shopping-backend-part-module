@@ -2,7 +2,6 @@ package com.ftg.demo.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.ftg.demo.entity.GoodClassify;
 import com.ftg.demo.entity.Goods;
 import com.ftg.demo.entity.GoodsHeatEnum;
 import com.ftg.demo.entity.GoodsStateEnum;
@@ -22,9 +21,17 @@ public class GoodsServiceImpl implements GoodsService {
     GoodsMapper goodsMapper;
 
     @Override
+    public PageEx<Goods> fuzzyQuery(int page, int limit, String gname) {
+        PageEx<Goods> ip = new PageEx<>(page, limit);
+        QueryWrapper<Goods> queryWrapper = new QueryWrapper<>();
+        queryWrapper.like("gname", gname);
+        return goodsMapper.selectPage(ip, queryWrapper);
+    }
+
+    @Override
     public PageEx<Goods> showPage(int page, int limit) {
-        PageEx<Goods> ip = new PageEx<>(page,limit);
-        return goodsMapper.selectPage(ip,null);
+        PageEx<Goods> ip = new PageEx<>(page, limit);
+        return goodsMapper.selectPage(ip, null);
     }
 
     @Override

@@ -16,8 +16,8 @@ public class Swagger2Config {
     @Bean
     public Docket getUserDocket(){
         ApiInfo apiInfo=new ApiInfoBuilder()
-                .title("用户管理")//api标题
-                .description("用户管理相关接口描述")//api描述
+                .title("Swagger-UI")//api标题
+                .description("测试接口")//api描述
                 .version("1.0.0")//版本号
                 .contact("sabre")//本API负责人的联系信息
                 .build();

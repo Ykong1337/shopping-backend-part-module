@@ -2,6 +2,7 @@ package com.ftg.demo.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ftg.demo.entity.GoodClassify;
+import com.ftg.demo.entity.Goods;
 import com.ftg.demo.service.GoodClassifyService;
 import com.ftg.demo.util.PageEx;
 import io.swagger.annotations.Api;
@@ -20,6 +21,12 @@ public class GoodClassifyController {
 
     @Autowired
     GoodClassifyService goodClassifyService;
+
+    @GetMapping("/pageGoodClassifyFuzzyQuery")
+    @ApiOperation("模糊查询")
+    public PageEx<GoodClassify> hello2(@RequestParam int page, @RequestParam int limit, @RequestParam String gname) {
+        return goodClassifyService.fuzzyQuery(page, limit, gname);
+    }
 
     @GetMapping("/pageGoodClassify")
     @ApiOperation("分页查询")

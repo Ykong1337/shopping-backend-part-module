@@ -2,7 +2,6 @@ package com.ftg.demo.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.ftg.demo.entity.GoodClassify;
 import com.ftg.demo.entity.UserSexEnum;
 import com.ftg.demo.entity.User;
 import com.ftg.demo.mapper.UserMapper;
@@ -23,8 +22,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public PageEx<User> showPage(int page, int limit) {
-        PageEx<User> ip = new PageEx<>(page,limit);
-        return userMapper.selectPage(ip,null);
+        PageEx<User> ip = new PageEx<>(page, limit);
+        return userMapper.selectPage(ip, null);
     }
 
     @Override

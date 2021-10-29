@@ -23,6 +23,12 @@ public class GoodsController {
     @Autowired
     GoodsService goodsService;
 
+    @GetMapping("/pageGoodsFuzzyQuery")
+    @ApiOperation("模糊查询")
+    public PageEx<Goods> hello2(@RequestParam int page, @RequestParam int limit, @RequestParam String gname) {
+        return goodsService.fuzzyQuery(page, limit, gname);
+    }
+
     @GetMapping("/pageGoods")
     @ApiOperation("分页查询")
     public PageEx<Goods> hello1(@RequestParam int page, @RequestParam int limit) {

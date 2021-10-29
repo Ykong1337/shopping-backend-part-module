@@ -10,6 +10,8 @@ public interface GoodClassifyService {
 
     Page<GoodClassify> showAll(int page, int limit);
 
+    PageEx<GoodClassify> fuzzyQuery(int page, int limit, String name);
+
     Map<String, Object> insertGoodClassify(Integer pid, String name);
 
     Map<String, Object> deleteGoodClassify(Integer pid, String name);

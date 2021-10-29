@@ -26,9 +26,17 @@ public class GoodClassifyServiceImpl implements GoodClassifyService {
     }
 
     @Override
+    public PageEx<GoodClassify> fuzzyQuery(int page, int limit, String name) {
+        PageEx<GoodClassify> ip = new PageEx<>(page, limit);
+        QueryWrapper<GoodClassify> queryWrapper = new QueryWrapper<>();
+        queryWrapper.like("name", name);
+        return goodClassifyMapper.selectPage(ip, queryWrapper);
+    }
+
+    @Override
     public PageEx<GoodClassify> showPage(int page, int limit) {
-        PageEx<GoodClassify> ip = new PageEx<>(page,limit);
-        return goodClassifyMapper.selectPage(ip,null);
+        PageEx<GoodClassify> ip = new PageEx<>(page, limit);
+        return goodClassifyMapper.selectPage(ip, null);
     }
 
     @Override
@@ -45,7 +53,7 @@ public class GoodClassifyServiceImpl implements GoodClassifyService {
             map.put("data", 1);
             goodClassifyMapper.insertGoodClassify(pid, name);
         } else {
-            if (goodClassifyMapper.selectState(pid,name).equals("已弃用")){
+            if (goodClassifyMapper.selectState(pid, name).equals("已弃用")) {
                 map.put("code", 200);
                 map.put("msg", "已存在，手动启用");
                 map.put("data", 1);
@@ -84,7 +92,7 @@ public class GoodClassifyServiceImpl implements GoodClassifyService {
         queryWrapper.eq("pid", pid);
         queryWrapper.eq("name", name);
         GoodClassify goodClassify = goodClassifyMapper.selectOne(queryWrapper);
-        if (goodClassify != null){
+        if (goodClassify != null) {
             map.put("code", 200);
             map.put("msg", "修改成功");
             map.put("data", 1);
@@ -95,7 +103,6 @@ public class GoodClassifyServiceImpl implements GoodClassifyService {
         }
         return map;
     }
-
 
 
 }
