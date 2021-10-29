@@ -7,9 +7,10 @@ import com.ftg.demo.entity.User;
 import com.ftg.demo.mapper.UserMapper;
 import com.ftg.demo.service.UserService;
 import com.ftg.demo.util.PageEx;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -17,7 +18,7 @@ import java.util.Map;
 @Service
 public class UserServiceImpl implements UserService {
 
-    @Autowired
+    @Resource
     UserMapper userMapper;
 
     @Override

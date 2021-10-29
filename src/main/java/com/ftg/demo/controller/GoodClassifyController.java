@@ -8,17 +8,18 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
+
 @RestController
 @Api(tags = "商品类别管理")
 public class GoodClassifyController {
 
-    @Autowired
+    @Resource
     GoodClassifyService goodClassifyService;
 
     @GetMapping("/pageGoodClassifyFuzzyQuery")

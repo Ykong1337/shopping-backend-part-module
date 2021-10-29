@@ -8,16 +8,16 @@ import com.ftg.demo.entity.GoodsStateEnum;
 import com.ftg.demo.mapper.GoodsMapper;
 import com.ftg.demo.service.GoodsService;
 import com.ftg.demo.util.PageEx;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.Map;
 
 @Service
 public class GoodsServiceImpl implements GoodsService {
 
-    @Autowired
+    @Resource
     GoodsMapper goodsMapper;
 
     @Override

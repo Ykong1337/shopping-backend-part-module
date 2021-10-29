@@ -6,16 +6,16 @@ import com.ftg.demo.entity.GoodClassify;
 import com.ftg.demo.mapper.GoodClassifyMapper;
 import com.ftg.demo.service.GoodClassifyService;
 import com.ftg.demo.util.PageEx;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.Map;
 
 @Service
 public class GoodClassifyServiceImpl implements GoodClassifyService {
 
-    @Autowired
+    @Resource
     GoodClassifyMapper goodClassifyMapper;
 
     @Override
