@@ -21,10 +21,13 @@ public class UserServiceImpl implements UserService {
     @Resource
     UserMapper userMapper;
 
+    Map<String, Object> map = new HashMap<>();
+
     @Override
     public PageEx<User> showPage(int page, int limit) {
         PageEx<User> ip = new PageEx<>(page, limit);
-        return userMapper.selectPage(ip, null);
+        userMapper.selectPage(ip, null);
+        return ip;
     }
 
     @Override
@@ -36,7 +39,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Map<String, Object> checkPassword(String account, String password) {
-        Map<String, Object> mp = new HashMap<>(3);
+        map.clear();
         QueryWrapper<User> qw = new QueryWrapper<>();
         qw.eq("account", account);
         qw.or();
@@ -46,20 +49,19 @@ public class UserServiceImpl implements UserService {
 
         User user = userMapper.selectOne(qw);
         if (user == null) {
-            mp.put("code", 502);
-            mp.put("msg", "账号不存在！");
+            map.put("code", 502);
+            map.put("msg", "账号不存在！");
         } else {
-            mp.put("code", user.getPassword().equals(password) ? 200 : 502);
-            mp.put("msg", user.getPassword().equals(password) ? "登陆成功！" : "密码错误");
-            mp.put("data", user);
+            map.put("code", user.getPassword().equals(password) ? 200 : 502);
+            map.put("msg", user.getPassword().equals(password) ? "登陆成功！" : "密码错误");
+            map.put("data", user);
         }
-        return mp;
+        return map;
     }
 
     @Override
     public Map<String, Object> registerUser(String phone_number, String password) {
-        Map<String, Object> map = new HashMap<>();
-
+        map.clear();
         QueryWrapper<User> query = new QueryWrapper<>();
         query.eq("phone_number", phone_number);
         User user = userMapper.selectOne(query);
@@ -79,7 +81,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Map<String, Object> modifyUserInfo(String phone_number, String username, Date birth, UserSexEnum sex, String hometown, String account, String mail) {
-        Map<String, Object> map = new HashMap<>();
+        map.clear();
         int n = userMapper.add_information(phone_number, username, birth, sex, hometown, account, mail);
         if (n > 0) {
             map.put("code", 200);
@@ -94,7 +96,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Map<String, Object> modifyUserPassword(String account, String password) {
-        Map<String, Object> map = new HashMap<>(3);
+        map.clear();
         int n = userMapper.modifyUser(account, password);
         if (n > 0) {
             map.put("code", 200);

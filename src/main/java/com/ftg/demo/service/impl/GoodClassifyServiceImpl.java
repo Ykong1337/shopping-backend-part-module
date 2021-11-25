@@ -18,6 +18,8 @@ public class GoodClassifyServiceImpl implements GoodClassifyService {
     @Resource
     GoodClassifyMapper goodClassifyMapper;
 
+    Map<String, Object> map = new HashMap<>();
+
     @Override
     public Page<GoodClassify> showAll(int page, int limit) {
         Page<GoodClassify> page1 = new Page<>(page, limit);
@@ -30,18 +32,20 @@ public class GoodClassifyServiceImpl implements GoodClassifyService {
         PageEx<GoodClassify> ip = new PageEx<>(page, limit);
         QueryWrapper<GoodClassify> queryWrapper = new QueryWrapper<>();
         queryWrapper.like("name", name);
-        return goodClassifyMapper.selectPage(ip, queryWrapper);
+        goodClassifyMapper.selectPage(ip, queryWrapper);
+        return ip;
     }
 
     @Override
     public PageEx<GoodClassify> showPage(int page, int limit) {
         PageEx<GoodClassify> ip = new PageEx<>(page, limit);
-        return goodClassifyMapper.selectPage(ip, null);
+        goodClassifyMapper.selectPage(ip, null);
+        return ip;
     }
 
     @Override
     public Map<String, Object> insertGoodClassify(Integer pid, String name) {
-        Map<String, Object> map = new HashMap<>();
+        map.clear();
         QueryWrapper<GoodClassify> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("pid", pid);
         queryWrapper.eq("name", name);
@@ -68,7 +72,7 @@ public class GoodClassifyServiceImpl implements GoodClassifyService {
 
     @Override
     public Map<String, Object> deleteGoodClassify(Integer pid, String name) {
-        Map<String, Object> map = new HashMap<>();
+        map.clear();
         QueryWrapper<GoodClassify> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("pid", pid);
         queryWrapper.eq("name", name);
@@ -87,7 +91,7 @@ public class GoodClassifyServiceImpl implements GoodClassifyService {
 
     @Override
     public Map<String, Object> updateGoodClassifyName(Integer pid, String name, String new_name) {
-        Map<String, Object> map = new HashMap<>();
+        map.clear();
         QueryWrapper<GoodClassify> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("pid", pid);
         queryWrapper.eq("name", name);

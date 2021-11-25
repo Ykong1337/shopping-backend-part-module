@@ -20,18 +20,22 @@ public class GoodsServiceImpl implements GoodsService {
     @Resource
     GoodsMapper goodsMapper;
 
+    Map<String, Object> map = new HashMap<>();
+
     @Override
     public PageEx<Goods> fuzzyQuery(int page, int limit, String gname) {
         PageEx<Goods> ip = new PageEx<>(page, limit);
         QueryWrapper<Goods> queryWrapper = new QueryWrapper<>();
         queryWrapper.like("gname", gname);
-        return goodsMapper.selectPage(ip, queryWrapper);
+        goodsMapper.selectPage(ip, queryWrapper);
+        return ip;
     }
 
     @Override
     public PageEx<Goods> showPage(int page, int limit) {
         PageEx<Goods> ip = new PageEx<>(page, limit);
-        return goodsMapper.selectPage(ip, null);
+        goodsMapper.selectPage(ip, null);
+        return ip;
     }
 
     @Override
@@ -53,7 +57,7 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Override
     public Map<String, Object> insertGood(Integer gid, String gname, GoodsStateEnum state, String type) {
-        Map<String, Object> map = new HashMap<>();
+        map.clear();
         QueryWrapper<Goods> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("gid", gid);
         queryWrapper.eq("gname", gname);
@@ -83,7 +87,7 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Override
     public Map<String, Object> deleteGood(Integer gid, String gname) {
-        Map<String, Object> map = new HashMap<>();
+        map.clear();
         QueryWrapper<Goods> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("gid", gid);
         queryWrapper.eq("gname", gname);
@@ -102,7 +106,7 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Override
     public Map<String, Object> updateGoodName(Integer gid, String gname, String new_gname) {
-        Map<String, Object> map = new HashMap<>();
+        map.clear();
         QueryWrapper<Goods> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("gid", gid);
         queryWrapper.eq("gname", gname);
@@ -122,7 +126,7 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Override
     public Map<String, Object> updateGoodHeat(Integer gid, String gname, GoodsHeatEnum heat) {
-        Map<String, Object> map = new HashMap<>();
+        map.clear();
         QueryWrapper<Goods> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("gid", gid);
         queryWrapper.eq("gname", gname);
@@ -142,7 +146,7 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Override
     public Map<String, Object> updateGoodState(Integer gid, String gname, GoodsStateEnum state) {
-        Map<String, Object> map = new HashMap<>();
+        map.clear();
         QueryWrapper<Goods> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("gid", gid);
         queryWrapper.eq("gname", gname);
